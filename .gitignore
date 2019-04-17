@@ -1,0 +1,6 @@
+venv/
+.vscode/
+final/
+
+*.pyc
+*.sqlite
