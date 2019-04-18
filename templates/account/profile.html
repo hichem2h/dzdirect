@@ -1,0 +1,36 @@
+{% extends 'sitebase.html' %}
+
+{% load i18n %}
+{% load account %}
+
+{% block main %}
+<div class="vizew-signin-area section-padding-80">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6">
+                    <div class="signin-content">
+                        <div class="section-heading">
+                            <h4>Edit Profile</h4>
+                            <div class="line"></div>
+                        </div>
+
+                    {% if form %}
+                        <form method="POST" action="{% url 'account_change_profile' %}">
+                                {% csrf_token %}
+                                {% for field in form %}
+                                    {{ field.errors }}
+                                    {{ field }}
+                                {% endfor %}
+                                <button type="submit" class="btn vizew-btn w-100 mt-30 name="action">{% trans "Changer votre Nom" %}</button>
+                                <br>
+                                <a class="btn vizew-btn w-100 mt-30" href="{% url 'account_change_password' %}">Changer votre Mot de pass</a>
+                        </form>
+                    {% else %}
+                        <p style="text-align:center">{% trans 'Your name is now changed.' %}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

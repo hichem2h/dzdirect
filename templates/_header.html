@@ -1,0 +1,71 @@
+{% load static %}
+
+<!-- Preloader -->
+<div class="preloader d-flex align-items-center justify-content-center">
+    <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+<!-- ##### Header Area Start ##### -->
+<header class="header-area">
+    <!-- Top Header Area -->
+
+
+    <!-- Navbar Area -->
+    <div class="vizew-main-menu" id="sticker">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+
+                <!-- Menu -->
+                <nav class="classy-navbar justify-content-between" id="vizewNav">
+
+                    <!-- Nav brand -->
+                    <a href="{% url 'home' %}" class="nav-brand"><img src="{% static 'img/core-img/logo2.png' %}" alt=""></a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <div class="classy-menu">
+
+                        <!-- Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                {% if user.is_authenticated %}
+                                    <ul>
+                                        <li><a href="{% url 'home' %}">Home</a></li>
+                                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                                        <li><a href="#">Profile</a>
+                                            <ul class="dropdown">
+                                                <li><a href="{% url 'account_change_profile' %}">- Parametres</a></li>
+                                                <li><a href="{% url 'account_logout' %}">- Deconnexion</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                {% else %}
+                                    <ul>
+                                        <li><a href="{% url 'home' %}">Home</a></li>
+                                        <li><a href="{% url 'account_login' %}">Login</a></li>
+                                        <li> <a href="{% url 'account_signup' %}">Sign Up </a>
+                                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                                    </ul>
+                                {% endif %}
+
+                            </div>
+                            <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ##### Header Area End ##### -->

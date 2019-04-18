@@ -1,0 +1,24 @@
+{% extends 'sitebase.html' %}
+
+{% load i18n %}
+{% load account %}
+
+{% block main %}
+<div class="vizew-signin-area section-padding-80">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6">
+                    <div class="signin-content">
+                        <div class="section-heading">
+                            <h4>Congratulations!</h4>
+                            <div class="line"></div>
+                        </div>
+
+                        <p style="text-align:center">{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

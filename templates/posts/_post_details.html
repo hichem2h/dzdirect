@@ -1,0 +1,70 @@
+<!-- ##### Post Details Area Start ##### -->
+<section class="post-details-area mb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="single-video-area">
+                        <video width='100%' controls>
+                                <source preload="metadata" src='{{ MEDIA_URL }}{{ post.video }}' type='video/mp4'>
+                                Your browser does not support the video tag.
+                        </video>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Post Details Content Area -->
+            <div class="col-24 col-lg-16">
+                <div class="post-details-content d-flex">
+                    <!-- Post Share Info -->
+                    <div class="post-share-info">
+
+                        </div>
+                    <!-- Blog Content -->
+                    <div class="blog-content">
+
+                        <!-- Post Content -->
+                        <div class="post-content mt-0">
+                            <a href="#" class="post-cata cata-sm cata-danger">{{ post.category }}</a>
+                            <a href="single-post.html" class="post-title mb-2">{{ post.title }}</a>
+
+                            <div class="d-flex justify-content-between mb-30">
+                                <div class="post-meta d-flex align-items-center">
+                                    <a href="#" class="post-author">By {{ post.user.first_name }}</a>
+                                    <i class="fa fa-circle" aria-hidden="true"></i>
+                                    <a href="#" class="post-date">{{ post.date }}</a>
+                                </div>
+                                <div class="post-meta d-flex">
+
+                                    <a href="#" onClick="document.getElementById('likebutton').submit()">{{post.upvotes}} TRUE</a> 
+                                    <a href="#" onClick="document.getElementById('dislikebutton').submit()">{{post.downvotes}} FAKE</a> 
+                                    
+                                    
+                                    <form id="likebutton" method="POST" action="{% url 'post_details_upvote' pk=post.pk %}">
+                                        {% csrf_token %}
+                                        <input type="hidden">
+                                    </form>
+                                    
+                                    <form id="dislikebutton" method="POST" action="{% url 'post_details_downvote' pk=post.pk %}">
+                                        {% csrf_token %}
+                                        <input type="hidden">
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <p></p>
+
+                        <p>{{ post.description }}</p>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- ##### Post Details Area End ##### -->

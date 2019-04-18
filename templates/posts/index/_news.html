@@ -1,0 +1,55 @@
+<section class="trending-posts-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Section Heading -->
+                <div class="section-heading">
+                    <h1>Actualités</h1>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for post in news %}
+            <!-- Single Blog Post -->
+            <div class="col-12 col-md-4">
+                <div class="single-post-area mb-80">
+                    <!-- Post Thumbnail -->
+                    <div class="post-thumbnail">
+                        <video width='100%' preload="metadata" src='{{ MEDIA_URL }}{{ post.video }}#t=2' type='video/mp4' controls>
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
+                    <!-- Post Content -->
+                    <div class="post-content">
+                        <a href="#" class="post-cata cata-sm cata-primary">{{ post.category }}</a>
+                        <a href="{% url 'post_details' pk=post.pk %}" class="post-title">{{ post.title }}</a>
+                        <div class="post-meta d-flex">
+
+                            <a href="#" onClick="document.getElementById('likebutton{{post.pk}}').submit()">{{post.upvotes}} TRUE</a> 
+                            <a href="#" onClick="document.getElementById('dislikebutton{{post.pk}}').submit()">{{post.downvotes}} FAKE</a> 
+                            
+                            
+                            <form id="likebutton{{post.pk}}" method="POST" action="{% url 'post_details_upvote' pk=post.pk %}">
+                                {% csrf_token %}
+                                <input type="hidden">
+                            </form>
+                            
+                            <form id="dislikebutton{{post.pk}}" method="POST" action="{% url 'post_details_downvote' pk=post.pk %}">
+                                {% csrf_token %}
+                                <input type="hidden">
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+<!-- ##### Trending Posts Area End ##### -->

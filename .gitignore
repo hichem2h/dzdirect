@@ -1,6 +1,7 @@
 venv/
 .vscode/
 final/
+media/
 
 *.pyc
-*.sqlite
+*.sqlite3

@@ -1,0 +1,53 @@
+{% extends 'sitebase.html' %}
+
+{% load i18n %}
+
+{% block main %}
+
+<!-- ##### Breadcrumb Area Start ##### -->
+<div class="vizew-breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i>
+                                Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sign Up</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Breadcrumb Area End ##### -->
+
+<!-- ##### signin Area Start ##### -->
+<div class="vizew-signin-area section-padding-80">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="signin-content">
+                    <!-- Section Title -->
+                    <div class="section-heading">
+                        <h4>Great to have you here!</h4>
+                        <div class="line"></div>
+                    </div>
+
+                    <p style="text-align:center">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+                    <form action="{% url 'account_signup' %}" method="post">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            {{ field.errors }}
+                            {{ field }}
+                        {% endfor %}
+                        <button type="submit" class="btn vizew-btn w-100 mt-30" href=>Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### signin Area End ##### -->
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'sitebase.html' %}
+
+{% block main %}   
+<!-- ##### Breadcrumb Area Start ##### -->
+    <div class="vizew-breadcrumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">{{post.category}}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{post.title}}</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- ##### Breadcrumb Area End ##### -->
+
+{% include 'posts/_post_details.html' %}
+
+{% endblock %} 
