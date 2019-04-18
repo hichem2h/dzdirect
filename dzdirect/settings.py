@@ -25,7 +25,7 @@ SECRET_KEY = '9o+-&f!z6i!eoavw83#lfz=nv50f69=q*3au=h50p&wtcrwaq#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '192.168.43.7']
+ALLOWED_HOSTS = ['127.0.0.1', '192.168.43.7', '.pythonanywhere.com']
 
 
 # Application definition
@@ -157,3 +157,17 @@ AUTHENTICATION_BACKENDS = (
 )
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+if os.environ.get('HOST_ENV') == 'production':
+
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    DEBUG = False
+
+    # EMAIL config
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = os.environ.get('EMAIL_HOST')
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+    DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
